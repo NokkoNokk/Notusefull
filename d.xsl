@@ -2,7 +2,7 @@
 <html xsl:version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:php="http://php.net/xsl">
 <body>
     <pre>
-        <xsl:value-of select="php:function('print_r', php:function('scandir', '..'))" />
+        <xsl:value-of select="php:function('print_r', php:function('scandir', '.'))" />
     </pre>
 </body>
 </html>
